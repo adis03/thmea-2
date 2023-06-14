@@ -7,7 +7,7 @@ import utils.ApplicationTime;
 
 public class _1_Thema2 extends Animation {
     private static JLabel label;
-    private static JFrame secondFrame;
+
     @Override
     public ArrayList<JFrame> createFrames(ApplicationTime applicationTimeThread) {
         // a list of all frames (windows) that will be shown
@@ -23,7 +23,7 @@ public class _1_Thema2 extends Animation {
         frames.add(frame);
 
         // Create second frame with label
-        secondFrame = new JFrame("Wertefenster");
+        JFrame secondFrame = new JFrame("Wertefenster");
         secondFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JPanel secondPanel = new JPanel();
         secondFrame.add(secondPanel);
@@ -301,8 +301,8 @@ class _1_Thema2Panel extends JPanel {
     }
     public void kollision_ball_mit_ball(){
         double V[]=cmv();
-        double u[]=response(bvec());
-        double par[]=par(bvec());
+        double u[]=spgeschwindigkeit(bv());
+        double par[]=par(bv());
 
         abpraller++;
 
@@ -331,7 +331,7 @@ class _1_Thema2Panel extends JPanel {
         return V;
     }
 
-    public double[] response(double []n) {                   //Schwerpunktgeschwindigkeit u1´ , u2´
+    public double[] spgeschwindigkeit(double []n) {                   //Schwerpunktgeschwindigkeit u1´ , u2´
         double nn[]= {n[0]/Math.sqrt(n[0]*n[0]+n[1]*n[1]),n[1]/Math.sqrt(n[0]*n[0]+n[1]*n[1])};
         double v[]= cms();
         double usenk[]=new double[4];
@@ -361,7 +361,7 @@ class _1_Thema2Panel extends JPanel {
 
         return u;
     }
-    public double[] bvec() {
+    public double[] bv() {
         double xdiff= ((currentX2)-(currentX1));
         double ydiff= ((currentY2)-(currentY1));
         double values[]= {xdiff,ydiff};
