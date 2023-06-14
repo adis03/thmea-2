@@ -30,7 +30,7 @@ public class _1_Thema2 extends Animation {
         label = new JLabel("<html>Noch keine<br>Kollision bisher!</html>");
         secondPanel.add(label);
         secondFrame.pack();
-        secondFrame.setSize(250, 250);
+        secondFrame.setSize(200, 330);
         secondFrame.setLocation(920, 0);
         secondFrame.setVisible(true);
         frames.add(secondFrame);
@@ -77,7 +77,11 @@ class _1_Thema2Panel extends JPanel {
     double v[];
     double schwerpunktX;
     double schwerpunktY;
-
+    String u1x; String u1y;     String u1xStrich; String u1yStrich;
+    String u2x; String u2y;     String u2xStrich; String u2yStrich;
+    String v1xStrich; String v1yStrich;     String v2xStrich; String v2yStrich;
+    String Vx; String Vy;
+    int abpraller;
     @Override
     public void paintComponent(Graphics g) {
 
@@ -263,15 +267,16 @@ class _1_Thema2Panel extends JPanel {
         if(diameter >= b){
             String s = (
                     "bx:    " + (int) schwerpunktX + "  by:   " + (int) schwerpunktY + "<br>" +
-                            "   u1:  " + (int) schwerpunktX + "," + (int) schwerpunktX + "<br>" +
-                            "   u2:  " + (int) schwerpunktX + "," + (int) schwerpunktX + "<br>" +
-                            "   u1´: " + (int) schwerpunktX + "," + (int) schwerpunktX + "<br>" +
-                            "   u2´: " + (int) schwerpunktX + "," + (int) schwerpunktX + "<br>" +
-                            "   v1:  " + (int) schwerpunktX + "," + (int) schwerpunktX + "<br>" +
-                            "   v2:  " + (int) schwerpunktX + "," + (int) schwerpunktX + "<br>" +
-                            "   v1´: " + (int) schwerpunktX + "," + (int) schwerpunktX + "<br>" +
-                            "   v2´: " + (int) schwerpunktX + "," + (int) schwerpunktX + "<br>" +
-                            "   V:   " + (int) schwerpunktX + "," + (int) schwerpunktX + "<br>"
+                            "   u1:  " + u1x + "," + u1y + "<br>" +
+                            "   u2:  " + u2x + "," + u2y + "<br>" +
+                            "   u1´: " + u1xStrich + "," + u1yStrich + "<br>" +
+                            "   u2´: " + u2xStrich + "," + u2yStrich + "<br>" +
+                            "   v1:  " + (int) vX1 + "," + (int) vY1 + "<br>" +
+                            "   v2:  " + (int) vX2 + "," + (int) vY2 + "<br>" +
+                            "   v1´: " + v1xStrich + "," + v1yStrich + "<br>" +
+                            "   v2´: " + v2xStrich + "," + v2yStrich + "<br>" +
+                            "   V:   " + Vx + "," + Vy + "<br>" +
+                            "   Kollisionen:    " + abpraller
                     );
             _1_Thema2.updateLabelText(s);
         }
@@ -299,14 +304,20 @@ class _1_Thema2Panel extends JPanel {
         double u[]=response(bvec());
         double par[]=par(bvec());
 
+        abpraller++;
+
         vX1=u[0]+V[0];
         vY1=u[1]+V[1];
+        v1xStrich = ""+(int)vX1;
+        v1yStrich = ""+(int)vY1;
         startX1=currentX1+par[2]*3;   //Offset 3
         startY1=currentY1+par[3]*3;
         collisionTime1 = time;
 
         vX2=u[2]+V[0];
         vY2=u[3]+V[1];
+        v2xStrich = ""+(int)vX2;
+        v2yStrich = ""+(int)vY2;
         startX2=currentX2+par[0]*3;   //Offset 3
         startY2=currentY2+par[1]*3;
         collisionTime2 = time;
@@ -315,6 +326,8 @@ class _1_Thema2Panel extends JPanel {
         double V[]=new double[2];
         V[0]=(1/(masse1+masse2))*(masse1*vX1+masse2*vX2);
         V[1]=(1/(masse1+masse2))*(masse1*vY1+masse2*vY2);
+        Vx = ""+(int)V[0];
+        Vy = ""+(int)V[1];
         return V;
     }
 
@@ -338,6 +351,11 @@ class _1_Thema2Panel extends JPanel {
         usenk[2]=v[2]-(koeffizient*upar[2]);
         usenk[3]=v[3]-(koeffizient*upar[3]);
 
+        u1xStrich = ""+(int)(usenk[0]-upar[0]);
+        u1yStrich = ""+(int)(usenk[1]-upar[1]);
+        u2xStrich = ""+(int)(usenk[2]-upar[2]);
+        u2yStrich = ""+(int)(usenk[3]-upar[3]);
+
         double []u= {usenk[0]-upar[0],usenk[1]-upar[1],     //u1´
                     usenk[2]-upar[2],usenk[3]-upar[3]};		//u2´
 
@@ -356,9 +374,13 @@ class _1_Thema2Panel extends JPanel {
 
         u[0]=(masse2/(masse1+masse2))*(vX1-vX2);			//u1
         u[1]=(masse2/(masse1+masse2))*(vY1-vY2);
+        u1x = ""+(int)u[0];
+        u1y = ""+(int)u[1];
 
         u[2]=(masse1/(masse1+masse2))*(vX2-vX1);			//u2
         u[3]=(masse1/(masse1+masse2))*(vY2-vY1);
+        u2x = ""+(int)u[2];
+        u2y = ""+(int)u[3];
 
         return u;
     }
