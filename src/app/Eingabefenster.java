@@ -40,12 +40,12 @@ public class Eingabefenster extends Animation {
         private JLabel outputLabel; //  output hinzufügen
         private JButton calculateButton; // start-button hinzufügen
 
-        public static double startX1 = 255;
-        public static double startY1 = 255;
+        public static double startX1 = 150;
+        public static double startY1 = 300;
         public static double vX1 = 160;
         public static double vY1 = 0;
-        public static double startX2 = 455;
-        public static double startY2 = 455;
+        public static double startX2 = 300;
+        public static double startY2 = 450;
         public static double vX2 = 0;
         public static double vY2 = -160;
         public static double masse1 = 1.0;

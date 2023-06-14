@@ -301,13 +301,15 @@ class _1_Thema2Panel extends JPanel {
 
         vX1=u[0]+V[0];
         vY1=u[1]+V[1];
-        currentX1=currentX1+par[2]*3;   //Offset 3
-        currentY1=currentY1+par[3]*3;
+        startX1=currentX1+par[2]*3;   //Offset 3
+        startY1=currentY1+par[3]*3;
+        collisionTime1 = time;
 
         vX2=u[2]+V[0];
         vY2=u[3]+V[1];
-        currentX2=currentX2+par[0]*3;   //Offset 3
-        currentY2=currentY2+par[1]*3;
+        startX2=currentX2+par[0]*3;   //Offset 3
+        startY2=currentY2+par[1]*3;
+        collisionTime2 = time;
     }
     public double[] cmv() {    // Schwerpunktgeschwindigkeit
         double V[]=new double[2];

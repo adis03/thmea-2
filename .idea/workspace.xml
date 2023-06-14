@@ -4,21 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eebb5c30-e837-443a-bff2-1aaf97928163" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Animation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Eingabefenster.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/_0_Constants.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/_1_Thema2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/ApplicationTime.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/FrameUpdater.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/thmea-2.iml" afterDir="false" />
+    <list default="true" id="eebb5c30-e837-443a-bff2-1aaf97928163" name="Changes" comment="Test">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Eingabefenster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Eingabefenster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/_1_Thema2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_1_Thema2.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +65,14 @@
       <option name="presentableId" value="Default" />
       <updated>1682529579436</updated>
     </task>
+    <task id="LOCAL-00001" summary="Test">
+      <created>1686753607686</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1686753607687</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -88,6 +85,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
