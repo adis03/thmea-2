@@ -69,7 +69,7 @@ class _1_Thema2Panel extends JPanel {
     double collisionTime2 = 0.0;
     double masse2 = Double.parseDouble(Eingabefenster.SecondaryGraphicsContent.inputField3.getText());
     double koeffizient = Double.parseDouble(Eingabefenster.SecondaryGraphicsContent.inputField1.getText());
-    double diameter = 50;
+    double diameter = 40;
     double normal1[] = {1,1};
     double normal2[] = {-1,1};
     double normal3[] = {-1,-1};
@@ -261,28 +261,6 @@ class _1_Thema2Panel extends JPanel {
         if(diameter >= b){
             kollision_ball_mit_ball();
         }
-
-        //=============Wertefenster=======================================
-        if(diameter >= b){
-            u1x = Math.round(-((masse2/(masse1+masse2))*(vX1-vX2))*100.0)/100.0;
-            u1y = Math.round(((masse2/(masse1+masse2))*(vY1-vY2))*100.0)/100.0;
-            u2x = Math.round(-((masse1/(masse1+masse2))*(vX2-vX1))*100.0)/100.0;
-            u2y = Math.round(((masse1/(masse1+masse2))*(vY2-vY1))*100.0)/100.0;
-            String s = (
-                    "bx:    " + (int) schwerpunktX + "  by:   " + (int) schwerpunktY + "<br>" +
-                            "|b|:   " + Math.round(Math.sqrt(Math.pow(currentX2 - currentX1, 2) + Math.pow(currentY2 - currentY1, 2))*100.0)/100.0 + "<br>" +
-                            "   u1:  " + u1x + ",   " + u1y + "<br>" +
-                            "   u2:  " + u2x + ",   " + u2y + "<br>" +
-                            "   u1´: " + u1xStrich + ",     " + u1yStrich + "<br>" +
-                            "   u2´: " + u2xStrich + ",     " + u2yStrich + "<br>" +
-                            "   v1:  " + Math.round(vX2*100.0)/100.0 + ",     " + Math.round(vY2*100.0)/100.0 + "<br>" +
-                            "   v2:  " + Math.round(-vX1*100.0)/100.0 + ",     " + Math.round(vY1*100.0)/100.0 + "<br>" +
-                            "   v1´: " + v1xStrich + ",     " + v1yStrich + "<br>" +
-                            "   v2´: " + v2xStrich + ",     " + v2yStrich + "<br>" +
-                            "   V:   " + Vx + ",        " + Vy + "<br>"
-                    );
-            _1_Thema2.updateLabelText(s);
-        }
     }
     public static double[] kollision_Diagonale_ball(double[] n,double vX, double vY) {
         double eps1=1;
@@ -307,18 +285,43 @@ class _1_Thema2Panel extends JPanel {
         double u[]=spgeschwindigkeit(bv());
         double par[]=par(bv());
 
+        u1x = Math.round(((masse2/(masse1+masse2))*(vX1-vX2))*100.0)/100.0;
+        u1y = Math.round(((masse2/(masse1+masse2))*(vY1-vY2))*100.0)/100.0;
+        u2x = Math.round(((masse1/(masse1+masse2))*(vX2-vX1))*100.0)/100.0;
+        u2y = Math.round(((masse1/(masse1+masse2))*(vY2-vY1))*100.0)/100.0;
+
+        u1xStrich = Math.round(u[0]*100.0)/100.0;
+        u1yStrich = Math.round(u[1]*100.0)/100.0;
+        u2xStrich = Math.round(u[2]*100.0)/100.0;
+        u2yStrich = Math.round(u[3]*100.0)/100.0;
+
+        v1xStrich = Math.round((u[0]+V[0])*100.0)/100.0;
+        v1yStrich = Math.round((u[1]+V[1])*100.0)/100.0;
+        v2xStrich = Math.round((u[2]+V[0])*100.0)/100.0;
+        v2yStrich = Math.round((u[3]+V[1])*100.0)/100.0;
+        String s = (
+                "bx:    " + Math.round((currentX2 - currentX1)*100.0)/100.0 + "  by:   " + Math.round((currentY2 - currentY1)*100.0)/100.0 + "<br>" +
+                        "|b|:   " + (diameter*2) + "<br>" +
+                        "   u1:  " + u1x + ",   " + u1y + "<br>" +
+                        "   u2:  " + u2x + ",   " + u2y + "<br>" +
+                        "   u1´: " + u1xStrich + ",     " + u1yStrich + "<br>" +
+                        "   u2´: " + u2xStrich + ",     " + u2yStrich + "<br>" +
+                        "   v1:  " + Math.round(vX1*100.0)/100.0 + ",     " + Math.round(vY1*100.0)/100.0 + "<br>" +
+                        "   v2:  " + Math.round(vX2*100.0)/100.0 + ",     " + Math.round(vY2*100.0)/100.0 + "<br>" +
+                        "   v1´: " + v1xStrich + ",     " + v1yStrich + "<br>" +
+                        "   v2´: " + v2xStrich + ",     " + v2yStrich + "<br>" +
+                        "   V:   " + Vx + ",        " + Vy + "<br>"
+        );
+        _1_Thema2.updateLabelText(s);
+
         vX1=u[0]+V[0];
         vY1=u[1]+V[1];
-        v1xStrich = Math.round(vX1*100.0)/100.0;
-        v1yStrich = Math.round(vY1*100.0)/100.0;
-        startX1=currentX1+par[2]*3;   //Offset 3
+        startX1=currentX1+par[2]        *3;   //Offset 3
         startY1=currentY1+par[3]*3;
         collisionTime1 = time;
 
         vX2=u[2]+V[0];
         vY2=u[3]+V[1];
-        v2xStrich = Math.round(vX2*100.0)/100.0;
-        v2yStrich = Math.round(vY2*100.0)/100.0;
         startX2=currentX2+par[0]*3;   //Offset 3
         startY2=currentY2+par[1]*3;
         collisionTime2 = time;
@@ -351,11 +354,6 @@ class _1_Thema2Panel extends JPanel {
 
         usenk[2]=v[2]-(koeffizient*upar[2]);
         usenk[3]=v[3]-(koeffizient*upar[3]);
-
-        u1xStrich = Math.round((usenk[0]-upar[0])*100.0)/100.0;
-        u1yStrich = Math.round((usenk[1]-upar[1])*100.0)/100.0;
-        u2xStrich = Math.round((usenk[2]-upar[2])*100.0)/100.0;
-        u2yStrich = Math.round((usenk[3]-upar[3])*100.0)/100.0;
 
         double []u= {usenk[0]-upar[0],usenk[1]-upar[1],     //u1´
                     usenk[2]-upar[2],usenk[3]-upar[3]};		//u2´

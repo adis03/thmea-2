@@ -45,23 +45,11 @@ public class Eingabefenster extends Animation {
         public static double vX1 = 30;
         public static double vY1 = 0;
         public static double startX2 = 455;
-        public static double startY2 = 255 + 110;
+        public static double startY2 = 255 - 110;
         public static double vX2 = 0;
-        public static double vY2 = -30;
+        public static double vY2 = 30;
         public static double masse1 = 1.0;
         public static double masse2 = 1.0;
-        /*
-        public static double startX1 = 255;
-        public static double startY1 = 205;
-        public static double vX1 = 160;
-        public static double vY1 = 0;
-        public static double startX2 = 455;
-        public static double startY2 = 405;
-        public static double vX2 = 0;
-        public static double vY2 = -160;
-        public static double masse1 = 1.0;
-        public static double masse2 = 1.0;
-         */
 
         public SecondaryGraphicsContent() {
             setLayout(new GridLayout(8, 1)); // Layout auf ein 5x2 Raster, um die Eingabefelder, den Button und die Ausgabe anzuzeigen
@@ -134,13 +122,13 @@ public class Eingabefenster extends Animation {
             vX1 = 30;
             vY1 = 0;
             startX2 = 455;
-            startY2 = 255 + 110;
+            startY2 = 255 - 110;
             vX2 = 0;
-            vY2 = -30;
+            vY2 = 30;
         }
         public void werteBeispiel2(){
             startX1 = 455 - 140;
-            startY1 = 255 - 10;
+            startY1 = 255 + 10;
             vX1 = 30;
             vY1 = 0;
             startX2 = 455;
@@ -152,44 +140,12 @@ public class Eingabefenster extends Animation {
             startX1 = 455;
             startY1 = 255;
             vX1 = 30;
-            vY1 = -40;
+            vY1 = 40;
             startX2 = 455 + 80;
             startY2 = 255 ;
             vX2 = 0;
-            vY2 = -50;
+            vY2 = 50;
         }
-        /*
-        public void werteBeispiel1(){
-            startX1 = 255;
-            startY1 = 255;
-            vX1 = 160;
-            vY1 = 0;
-            startX2 = 455;
-            startY2 = 455;
-            vX2 = 0;
-            vY2 = -160;
-        }
-        public void werteBeispiel2(){
-            startX1 = 150;
-            startY1 = 250;
-            vX1 = 160;
-            vY1 = 0;
-            startX2 = 455;
-            startY2 = 255;
-            vX2 = 0;
-            vY2 = 0;
-        }
-        public void werteBeispiel3(){
-            startX1 = 355;
-            startY1 = 355;
-            vX1 = 30;
-            vY1 = -140;
-            startX2 = 435;
-            startY2 = 355;
-            vX2 = 0;
-            vY2 = -160;
-        }
-         */
         public void berechneAusgabe() {
             double koeffizient = Double.parseDouble(inputField1.getText());
 
