@@ -77,11 +77,10 @@ class _1_Thema2Panel extends JPanel {
     double v[];
     double schwerpunktX;
     double schwerpunktY;
-    String u1x; String u1y;     String u1xStrich; String u1yStrich;
-    String u2x; String u2y;     String u2xStrich; String u2yStrich;
-    String v1xStrich; String v1yStrich;     String v2xStrich; String v2yStrich;
-    String Vx; String Vy;
-    int abpraller;
+    double u1x; double u1y;     double u1xStrich; double u1yStrich;
+    double u2x; double u2y;     double u2xStrich; double u2yStrich;
+    double v1xStrich; double v1yStrich;     double v2xStrich; double v2yStrich;
+    double Vx; double Vy;
     @Override
     public void paintComponent(Graphics g) {
 
@@ -265,18 +264,22 @@ class _1_Thema2Panel extends JPanel {
 
         //=============Wertefenster=======================================
         if(diameter >= b){
+            u1x = Math.round(-((masse2/(masse1+masse2))*(vX1-vX2))*100.0)/100.0;
+            u1y = Math.round(((masse2/(masse1+masse2))*(vY1-vY2))*100.0)/100.0;
+            u2x = Math.round(-((masse1/(masse1+masse2))*(vX2-vX1))*100.0)/100.0;
+            u2y = Math.round(((masse1/(masse1+masse2))*(vY2-vY1))*100.0)/100.0;
             String s = (
                     "bx:    " + (int) schwerpunktX + "  by:   " + (int) schwerpunktY + "<br>" +
-                            "   u1:  " + u1x + "," + u1y + "<br>" +
-                            "   u2:  " + u2x + "," + u2y + "<br>" +
-                            "   u1´: " + u1xStrich + "," + u1yStrich + "<br>" +
-                            "   u2´: " + u2xStrich + "," + u2yStrich + "<br>" +
-                            "   v1:  " + (int) vX1 + "," + (int) vY1 + "<br>" +
-                            "   v2:  " + (int) vX2 + "," + (int) vY2 + "<br>" +
-                            "   v1´: " + v1xStrich + "," + v1yStrich + "<br>" +
-                            "   v2´: " + v2xStrich + "," + v2yStrich + "<br>" +
-                            "   V:   " + Vx + "," + Vy + "<br>" +
-                            "   Kollisionen:    " + abpraller
+                            "|b|:   " + Math.round(Math.sqrt(Math.pow(currentX2 - currentX1, 2) + Math.pow(currentY2 - currentY1, 2))*100.0)/100.0 + "<br>" +
+                            "   u1:  " + u1x + ",   " + u1y + "<br>" +
+                            "   u2:  " + u2x + ",   " + u2y + "<br>" +
+                            "   u1´: " + u1xStrich + ",     " + u1yStrich + "<br>" +
+                            "   u2´: " + u2xStrich + ",     " + u2yStrich + "<br>" +
+                            "   v1:  " + Math.round(vX2*100.0)/100.0 + ",     " + Math.round(vY2*100.0)/100.0 + "<br>" +
+                            "   v2:  " + Math.round(-vX1*100.0)/100.0 + ",     " + Math.round(vY1*100.0)/100.0 + "<br>" +
+                            "   v1´: " + v1xStrich + ",     " + v1yStrich + "<br>" +
+                            "   v2´: " + v2xStrich + ",     " + v2yStrich + "<br>" +
+                            "   V:   " + Vx + ",        " + Vy + "<br>"
                     );
             _1_Thema2.updateLabelText(s);
         }
@@ -304,20 +307,18 @@ class _1_Thema2Panel extends JPanel {
         double u[]=spgeschwindigkeit(bv());
         double par[]=par(bv());
 
-        abpraller++;
-
         vX1=u[0]+V[0];
         vY1=u[1]+V[1];
-        v1xStrich = ""+(int)vX1;
-        v1yStrich = ""+(int)vY1;
+        v1xStrich = Math.round(vX1*100.0)/100.0;
+        v1yStrich = Math.round(vY1*100.0)/100.0;
         startX1=currentX1+par[2]*3;   //Offset 3
         startY1=currentY1+par[3]*3;
         collisionTime1 = time;
 
         vX2=u[2]+V[0];
         vY2=u[3]+V[1];
-        v2xStrich = ""+(int)vX2;
-        v2yStrich = ""+(int)vY2;
+        v2xStrich = Math.round(vX2*100.0)/100.0;
+        v2yStrich = Math.round(vY2*100.0)/100.0;
         startX2=currentX2+par[0]*3;   //Offset 3
         startY2=currentY2+par[1]*3;
         collisionTime2 = time;
@@ -326,8 +327,8 @@ class _1_Thema2Panel extends JPanel {
         double V[]=new double[2];
         V[0]=(1/(masse1+masse2))*(masse1*vX1+masse2*vX2);
         V[1]=(1/(masse1+masse2))*(masse1*vY1+masse2*vY2);
-        Vx = ""+(int)V[0];
-        Vy = ""+(int)V[1];
+        Vx = Math.round(V[0]*100.0)/100.0;
+        Vy = Math.round(V[1]*100.0)/100.0;
         return V;
     }
 
@@ -351,10 +352,10 @@ class _1_Thema2Panel extends JPanel {
         usenk[2]=v[2]-(koeffizient*upar[2]);
         usenk[3]=v[3]-(koeffizient*upar[3]);
 
-        u1xStrich = ""+(int)(usenk[0]-upar[0]);
-        u1yStrich = ""+(int)(usenk[1]-upar[1]);
-        u2xStrich = ""+(int)(usenk[2]-upar[2]);
-        u2yStrich = ""+(int)(usenk[3]-upar[3]);
+        u1xStrich = Math.round((usenk[0]-upar[0])*100.0)/100.0;
+        u1yStrich = Math.round((usenk[1]-upar[1])*100.0)/100.0;
+        u2xStrich = Math.round((usenk[2]-upar[2])*100.0)/100.0;
+        u2yStrich = Math.round((usenk[3]-upar[3])*100.0)/100.0;
 
         double []u= {usenk[0]-upar[0],usenk[1]-upar[1],     //u1´
                     usenk[2]-upar[2],usenk[3]-upar[3]};		//u2´
@@ -374,13 +375,9 @@ class _1_Thema2Panel extends JPanel {
 
         u[0]=(masse2/(masse1+masse2))*(vX1-vX2);			//u1
         u[1]=(masse2/(masse1+masse2))*(vY1-vY2);
-        u1x = ""+(int)u[0];
-        u1y = ""+(int)u[1];
 
         u[2]=(masse1/(masse1+masse2))*(vX2-vX1);			//u2
         u[3]=(masse1/(masse1+masse2))*(vY2-vY1);
-        u2x = ""+(int)u[2];
-        u2y = ""+(int)u[3];
 
         return u;
     }

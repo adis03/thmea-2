@@ -40,6 +40,17 @@ public class Eingabefenster extends Animation {
         private JLabel outputLabel; //  output hinzufügen
         private JButton calculateButton; // start-button hinzufügen
 
+        public static double startX1 = 455 - 110;
+        public static double startY1 = 255;
+        public static double vX1 = 30;
+        public static double vY1 = 0;
+        public static double startX2 = 455;
+        public static double startY2 = 255 + 110;
+        public static double vX2 = 0;
+        public static double vY2 = -30;
+        public static double masse1 = 1.0;
+        public static double masse2 = 1.0;
+        /*
         public static double startX1 = 255;
         public static double startY1 = 205;
         public static double vX1 = 160;
@@ -50,6 +61,7 @@ public class Eingabefenster extends Animation {
         public static double vY2 = -160;
         public static double masse1 = 1.0;
         public static double masse2 = 1.0;
+         */
 
         public SecondaryGraphicsContent() {
             setLayout(new GridLayout(8, 1)); // Layout auf ein 5x2 Raster, um die Eingabefelder, den Button und die Ausgabe anzuzeigen
@@ -117,6 +129,37 @@ public class Eingabefenster extends Animation {
             g.setColor(Color.LIGHT_GRAY);
         }
         public void werteBeispiel1(){
+            startX1 = 455 - 110;
+            startY1 = 255;
+            vX1 = 30;
+            vY1 = 0;
+            startX2 = 455;
+            startY2 = 255 + 110;
+            vX2 = 0;
+            vY2 = -30;
+        }
+        public void werteBeispiel2(){
+            startX1 = 455 - 140;
+            startY1 = 255 - 10;
+            vX1 = 30;
+            vY1 = 0;
+            startX2 = 455;
+            startY2 = 255;
+            vX2 = 0;
+            vY2 = 0;
+        }
+        public void werteBeispiel3(){
+            startX1 = 455;
+            startY1 = 255;
+            vX1 = 30;
+            vY1 = -40;
+            startX2 = 455 + 80;
+            startY2 = 255 ;
+            vX2 = 0;
+            vY2 = -50;
+        }
+        /*
+        public void werteBeispiel1(){
             startX1 = 255;
             startY1 = 255;
             vX1 = 160;
@@ -146,6 +189,7 @@ public class Eingabefenster extends Animation {
             vX2 = 0;
             vY2 = -160;
         }
+         */
         public void berechneAusgabe() {
             double koeffizient = Double.parseDouble(inputField1.getText());
 
