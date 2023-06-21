@@ -81,6 +81,8 @@ class _1_Thema2Panel extends JPanel {
     double u2x; double u2y;     double u2xStrich; double u2yStrich;
     double v1xStrich; double v1yStrich;     double v2xStrich; double v2yStrich;
     double Vx; double Vy;
+
+    boolean col;
     @Override
     public void paintComponent(Graphics g) {
 
@@ -299,20 +301,23 @@ class _1_Thema2Panel extends JPanel {
         v1yStrich = Math.round((u[1]+V[1])*100.0)/100.0;
         v2xStrich = Math.round((u[2]+V[0])*100.0)/100.0;
         v2yStrich = Math.round((u[3]+V[1])*100.0)/100.0;
-        String s = (
-                "bx:    " + Math.round((currentX2 - currentX1)*100.0)/100.0 + "  by:   " + Math.round((currentY2 - currentY1)*100.0)/100.0 + "<br>" +
-                        "|b|:   " + (diameter*2) + "<br>" +
-                        "   u1:  " + u1x + ",   " + u1y + "<br>" +
-                        "   u2:  " + u2x + ",   " + u2y + "<br>" +
-                        "   u1´: " + u1xStrich + ",     " + u1yStrich + "<br>" +
-                        "   u2´: " + u2xStrich + ",     " + u2yStrich + "<br>" +
-                        "   v1:  " + Math.round(vX1*100.0)/100.0 + ",     " + Math.round(vY1*100.0)/100.0 + "<br>" +
-                        "   v2:  " + Math.round(vX2*100.0)/100.0 + ",     " + Math.round(vY2*100.0)/100.0 + "<br>" +
-                        "   v1´: " + v1xStrich + ",     " + v1yStrich + "<br>" +
-                        "   v2´: " + v2xStrich + ",     " + v2yStrich + "<br>" +
-                        "   V:   " + Vx + ",        " + Vy + "<br>"
-        );
-        _1_Thema2.updateLabelText(s);
+        if(!col) {
+            String s = (
+                    "bx:    " + Math.round((currentX2 - currentX1) * 100.0) / 100.0 + "  by:   " + Math.round((currentY2 - currentY1) * 100.0) / 100.0 + "<br>" +
+                            "|b|:   " + (diameter * 2) + "<br>" +
+                            "   u1:  " + u1x + ",   " + u1y + "<br>" +
+                            "   u2:  " + u2x + ",   " + u2y + "<br>" +
+                            "   u1´: " + u1xStrich + ",     " + u1yStrich + "<br>" +
+                            "   u2´: " + u2xStrich + ",     " + u2yStrich + "<br>" +
+                            "   v1:  " + Math.round(vX1 * 100.0) / 100.0 + ",     " + Math.round(vY1 * 100.0) / 100.0 + "<br>" +
+                            "   v2:  " + Math.round(vX2 * 100.0) / 100.0 + ",     " + Math.round(vY2 * 100.0) / 100.0 + "<br>" +
+                            "   v1´: " + v1xStrich + ",     " + v1yStrich + "<br>" +
+                            "   v2´: " + v2xStrich + ",     " + v2yStrich + "<br>" +
+                            "   V:   " + Vx + ",        " + Vy + "<br>"
+            );
+            _1_Thema2.updateLabelText(s);
+            col = true;
+        }
 
         vX1=u[0]+V[0];
         vY1=u[1]+V[1];
