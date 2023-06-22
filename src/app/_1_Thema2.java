@@ -301,10 +301,12 @@ class _1_Thema2Panel extends JPanel {
         v1yStrich = Math.round((u[1]+V[1])*100.0)/100.0;
         v2xStrich = Math.round((u[2]+V[0])*100.0)/100.0;
         v2yStrich = Math.round((u[3]+V[1])*100.0)/100.0;
+        double bx = Math.round((currentX2 - currentX1) * 100.0) / 100.0;
+        double by = Math.round((currentY2 - currentY1) * 100.0) / 100.0;
         if(!col) {
             String s = (
                     "bx:    " + Math.round((currentX2 - currentX1) * 100.0) / 100.0 + "  by:   " + Math.round((currentY2 - currentY1) * 100.0) / 100.0 + "<br>" +
-                            "|b|:   " + (diameter * 2) + "<br>" +
+                            "|b|:   " + Math.sqrt(Math.pow(bx, 2) + Math.pow(by, 2)) + "<br>" +
                             "   u1:  " + u1x + ",   " + u1y + "<br>" +
                             "   u2:  " + u2x + ",   " + u2y + "<br>" +
                             "   u1´: " + u1xStrich + ",     " + u1yStrich + "<br>" +
@@ -350,18 +352,18 @@ class _1_Thema2Panel extends JPanel {
         upar[0]=u1par*nn[0];
         upar[1]=u1par*nn[1];
 
-        usenk[0]=v[0]-(koeffizient*upar[0]);
-        usenk[1]=v[1]-(koeffizient*upar[1]);
+        usenk[0]=v[0]-(upar[0]);
+        usenk[1]=v[1]-(upar[1]);
 
         double u2par=((v[2]*nn[0])+(v[3]*nn[1]))/((nn[0]*nn[0])+(nn[1]*nn[1]));  //u2
         upar[2]=u2par*nn[0];
         upar[3]=u2par*nn[1];
 
-        usenk[2]=v[2]-(koeffizient*upar[2]);
-        usenk[3]=v[3]-(koeffizient*upar[3]);
+        usenk[2]=v[2]-(upar[2]);
+        usenk[3]=v[3]-(upar[3]);
 
-        double []u= {usenk[0]-upar[0],usenk[1]-upar[1],     //u1´
-                    usenk[2]-upar[2],usenk[3]-upar[3]};		//u2´
+        double []u= {usenk[0]-(koeffizient*upar[0]),usenk[1]-(koeffizient*upar[1]),     //u1´
+                    usenk[2]-(koeffizient*upar[2]),usenk[3]-(koeffizient*upar[3])};		//u2´
 
         return u;
     }
